@@ -2,7 +2,7 @@
     require 'facebook.php';
     $facebook = new Facebook(array(
       'appId'  => 'your app id',
-  'secret' => 'your app secret',
+  'secret' => 'your secret',
       'cookie' => false,
    ));
 $APP_ID=334896846595020;
