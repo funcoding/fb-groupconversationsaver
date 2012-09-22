@@ -1,10 +1,12 @@
+
+
  <?php
 require 'facebook.php';
 
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
-  'appId'  => 'App Id',
-  'secret' => 'App Secret',
+  'appId'  => 'your app id',
+  'secret' => 'your app secret',
  ));
 
 //Get User ID
@@ -44,21 +46,7 @@ $filenam=$data2['id'];
 <html>
 <head>
 <meta charset="utf-8">
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# conversationsaver: http://ogp.me/ns/fb/conversationsaver#">
-  <meta property="fb:app_id"      content="334896846595020" /> 
-  <meta property="og:type"        content="conversationsaver:group_post" /> 
-  <meta property="og:url"         content="http://xplorers.host22.com" /> 
-  <meta property="og:title"       content="Facebook conversation saver" /> 
-  <meta property="og:image"       content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" /> 
-  <meta property="og:description" content="Extract and Save those specific post from your facebook group wall which you think will be important for future reference" /> 
-<link rel="shortcut icon" href="http://xplorers.host22.com/logo.jpg" />
 <title>Conversation Grabber</title>
-<script type="text/javascript" src="jquery-1.8.0.js"></script>
-<script type="text/javascript">
-function showDiv() {
-   document.getElementById('Search').style.display = "block";
-}
-</script>
 <style type="text/css">
 <!--
 body {
@@ -184,7 +172,7 @@ Select Group
   </header>
 <a title="logging out will also log you out from your facebook account" style="color:#006;font-weight:900;font-size:small;float:right; text-decoration:none;"href="<?php echo($logoutUrl); ?>"> Log Out &nbsp;&nbsp; </a>
 <a title="Report for bugs,improvements etc" style="color:#006;font-weight:900;font-size:small;float:right; text-decoration:none;" target="_blank" href="https://www.facebook.com/conversationsaver"> Contact Us &nbsp;&nbsp; </a>  
-  <a style="color:#006;font-weight:900;font-size:small;float:right; text-decoration:none;" href="https://fbgroupconversationsaver-fbapps.rhcloud.com">Home&nbsp;&nbsp;&nbsp;</a>
+  <a style="color:#006;font-weight:900;font-size:small;float:right; text-decoration:none;" href="http://xplorers.host22.com">Home&nbsp;&nbsp;&nbsp;</a>
   </div>
   <div class="sidebar1">
     <ul class="nav">
@@ -202,7 +190,7 @@ for($i=0;$i<count($group);$i++)
 {
 ?>
     
-      <li><a href="https://fbgroupconversationsaver-fbapps.rhcloud.com/?page=0&group=<?php echo($grsorted[$i][2]); ?>&name=<?php 
+      <li><a href="http://xplorers.host22.com/?page=0&group=<?php echo($grsorted[$i][2]); ?>&name=<?php 
 	  echo($grsorted[$i][1]); ?>"><?php echo($grsorted[$i][1]); ?></a></li>
     <?php
         }
@@ -224,9 +212,7 @@ for($i=0;$i<count($group);$i++)
                 ?>
 <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fxplorers.host22.com%2F&amp;send=false&amp;layout=button_count&amp;width=250&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=334896846595020" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:21px;" allowTransparency="true"></iframe>    
 <h1>&nbsp;&nbsp;Facebook Conversation Saver</h1>
-         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conversation 
-		 Saver is used to save and download specific posts from facebook groups.
-		 Saved Posts will be sent as attachment to users email id. Select a group from list and start saving those posts which you think are important.</p>
+         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conversation Saver is used to save and download specific posts from facebook groups.Saved Posts will be sent as attachment to user's email id. Select a group from list and start saving those posts which you think are important.</p>
          <p>&nbsp;</p>
          <p>&nbsp;</p>
          <p>&nbsp;</p>
@@ -252,32 +238,13 @@ $t=$offset+25;
 	$response = $facebook->api('/'.$groupp.'/feed?limit='.$t.'&offset='.$offset);
 	?>
   <div class="content">
-  <form method="get" action="search.php">
-
-<div id="Search"  style="display:none;"  >
-   &nbsp;&nbsp; <input type="text" name="q"/></div>
-    
-
-  <div class="fadeOutbox">
-    <input style="background:transparent;border:none;text-decoration:underline;color:blue; cursor:pointer;" type="button" class="Search" name="search" value="Search Group" onClick="showDiv()" />
-  </div>
-
-<input type="hidden" name="group" value="<?php echo($groupp) ?>" >
-<input type="hidden" name="groupname" value="<?php echo($groupname) ?>">
-<input type="hidden" name="page" value=0>
-</form>  
-<script type="text/javascript">
-$(".fadeOutbox").click(function () {
-   $(this).hide("fast");
-});
-</script>
 <?php if($curPage!=0) {?> 
-      <p> <a style="font-weight:800; color:#000;text-decoration:none;"href="https://fbgroupconversationsaver-fbapps.rhcloud.com/?page=<?php echo($prevPage);?>&group=<?php echo($groupp); ?>&name=<?php 
+      <p> <a style="font-weight:800; color:#000;text-decoration:none;"href="http://xplorers.host22.com/?page=<?php echo($prevPage);?>&group=<?php echo($groupp); ?>&name=<?php 
 	  echo($groupname); ?>"><-- previous page &nbsp;&nbsp;</a>  <?php } ?>
       <?php
 	  if(is_array($response['data'][1]))
 	  {?>
-      <a style="font-weight:800;color:#000;text-decoration:none; float:right;" href="https://fbgroupconversationsaver-fbapps.rhcloud.com/?page=<?php echo($nextPage);?>&group=<?php echo($groupp); ?>&name=<?php 
+      <a style="font-weight:800;color:#000;text-decoration:none; float:right;" href="http://xplorers.host22.com/?page=<?php echo($nextPage);?>&group=<?php echo($groupp); ?>&name=<?php 
 	  
 	  echo($groupname); ?>">next page --></a></p> <?php } ?>
     <h1><?php echo(stripslashes($groupname));?></h1>
@@ -285,35 +252,18 @@ $(".fadeOutbox").click(function () {
         
          foreach ($response['data'] as $value) {
         
-	if(isset($value['link']))
-{$link='</br>'."Link:".$value['link'].'<br>';
-}
-else
-{$link=NULL;}	
 if($value['likes']['count']>0)
    {
    $likes="[Total likes:".$value['likes']['count']."]";
    
    }
-else
-{
-	$likes=NULL;
-}
-if(isset($value['name']))
-{$vname='<br>'.$value['name'];}
-else
-{$vname=NULL;}
-if(isset($value['caption']))
-{$caption='<br>'.$value['caption'];}
-else
-{$caption=NULL;}
 if(isset($value['message']))
 {
         ?>
     </p>
     <form method="post" action="">
       <p name="who"><?php echo('<strong>'.$value['from']['name'].'</strong>'); ?> posted:</p>
-    <p name="message1"><?php echo(stripslashes(htmlspecialchars($value['message'])).'&nbsp;'.$likes.$vname.$caption.$link);  ?>
+    <p name="message1"><?php echo(stripslashes(htmlspecialchars($value['message']).'&nbsp;'.$likes));  ?>
 	<input style="  color:#03F;
     font-weight:bold;
 text-decoration: underline;" title="Extract and mail the post" type="submit"  value="Save post" 
@@ -348,10 +298,7 @@ echo('<hr>');
 ?>
 
    <input type="hidden" value="<?php echo($value['from']['name']);  ?>" name="name1"/>
-      <input type="hidden" value="<?php echo(htmlentities($value['message']).$likes);  ?>" name="comments"/> 
-	<input type="hidden" value="<?php echo($value['name']);  ?>" name="name1name"/>
-	<input type="hidden" value="<?php echo($value['caption']);  ?>" name="name1caption"/>
-	<input type="hidden" value="<?php echo($link);  ?>" name="name1link"/>
+      <input type="hidden" value="<?php echo(htmlentities($value['message'].'<br>'.$likes));  ?>" name="comments"/> 
       <input type="hidden" value="<?php echo($uemail);  ?>" name="useremail"/> 
         <input type="hidden" value="<?php echo($filenam);  ?>" name="data"/>  
  
@@ -361,12 +308,12 @@ echo('<hr>');
       
     <p>&nbsp;</p>
     <?php if($curPage!=0) {?> 
-      <p> <a style="font-weight:800; color:#000;text-decoration:none;"href="https://fbgroupconversationsaver-fbapps.rhcloud.com/?page=<?php echo($prevPage);?>&group=<?php echo($groupp); ?>&name=<?php 
+      <p> <a style="font-weight:800; color:#000;text-decoration:none;"href="http://xplorers.host22.com/?page=<?php echo($prevPage);?>&group=<?php echo($groupp); ?>&name=<?php 
 	  echo($groupname); ?>"><-- previous page &nbsp;&nbsp;</a>  <?php } ?>
       <?php
 	  if(is_array($response['data'][1]))
 	  {?>
-      <a style="font-weight:800;color:#000;text-decoration:none; float:right;" href="https://fbgroupconversationsaver-fbapps.rhcloud.com/?page=<?php echo($nextPage);?>&group=<?php echo($groupp); ?>&name=<?php 
+      <a style="font-weight:800;color:#000;text-decoration:none; float:right;" href="http://xplorers.host22.com/?page=<?php echo($nextPage);?>&group=<?php echo($groupp); ?>&name=<?php 
 	  
 	  echo($groupname); ?>">next page --></a></p> <?php } ?>
     <!-- end .content --></div>
@@ -386,28 +333,18 @@ $concat2=implode("",$concat1[0]);
 $filename2=$concat2.".doc";
 $who=$_POST['name1'];
 $posted=$_POST['comments'];
-$linkk=$_POST['name1link'];
-$captionn=$_POST['name1caption'];
-$name1n=$_POST['name1name'];
 $count=$_POST['count'];
 $email=$_POST['useremail'];
 $file2=fopen($filename2,"a+");
 fwrite($file2,"\n");
 fwrite($file2,$who." wrote:"."\n".htmlspecialchars(stripslashes($posted))."\n"."\n");
-if($name1n!=NULL)
-{fwrite($file2,$name1n."\n");}
-if($captionn!=NULL)
-{fwrite($file2,$captionn."\n");}
-if($linkk!=NULL)
-{fwrite($file2,strip_tags($linkk)."\n\n");}
-
 fwrite($file2,"Comments:"."\n"."\n");
 for($i=0;$i<=$count;$i++)
 {$names=$_POST['name2'.$i];
 $comments=$_POST['message2'.$i];
 if(isset($_POST['name2'.$i]))
 {
-fwrite($file2,$names." commented: \n\t".htmlspecialchars(stripslashes($comments)));
+fwrite($file2,$names." commented: \n\t".stripslashes($comments));
 fwrite($file2,"\n"."\n");
 }
 
