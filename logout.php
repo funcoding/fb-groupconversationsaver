@@ -1,8 +1,8 @@
 <?php
     require 'facebook.php';
     $facebook = new Facebook(array(
-  'appId'  => '105699709587292',
-  'secret' => '6a54569e99c72cf21724d46d25c1f899',
+  'appId'  => 'App Id',
+  'secret' => 'App Secret',
       'cookie' => false,
    ));
 $APP_ID=334896846595020;
@@ -12,5 +12,5 @@ $APP_ID=334896846595020;
 $_SESSION['fb_'.$APP_ID.'_access_token'] = '';  
 
    //redirects to index
-   header('Location: http://xplorers.host22.com');
+   header('Location: https://fbgroupconversationsaver-fbapps.rhcloud.com/');
 ?>
