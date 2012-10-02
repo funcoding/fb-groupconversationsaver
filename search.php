@@ -48,13 +48,6 @@ $filenam=$data2['id'];
 <html>
 <head>
 <meta charset="utf-8">
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# conversationsaver: http://ogp.me/ns/fb/conversationsaver#">
-  <meta property="fb:app_id"      content="334896846595020" /> 
-  <meta property="og:type"        content="conversationsaver:group_post" /> 
-  <meta property="og:url"         content="http://xplorers.host22.com" /> 
-  <meta property="og:title"       content="Facebook conversation saver" /> 
-  <meta property="og:image"       content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" /> 
-  <meta property="og:description" content="Extract and Save those specific post from your facebook group wall which you think will be important for future reference" /> 
 <title>Conversation Grabber</title>
 <script type="text/javascript" src="jquery-1.8.0.js"></script>
 <script type="text/javascript">
@@ -188,7 +181,7 @@ Select Group
   </header>
   <a title="logging out will also log you out from your facebook account" style="color:#006;font-weight:900;font-size:small;float:right; text-decoration:none;"href="<?php echo($logoutUrl); ?>"> Log Out &nbsp;&nbsp; </a>
 <a title="Report for bugs,improvements etc" style="color:#006;font-weight:900;font-size:small;float:right; text-decoration:none;" target="_blank" href="https://www.facebook.com/conversationsaver"> Contact Us &nbsp;&nbsp; </a>  
-  <a style="color:#006;font-weight:900;font-size:small;float:right; text-decoration:none;" href="https://fbgroupconversationsaver-fbapps.rhcloud.com/">Home&nbsp;&nbsp;&nbsp;</a>
+  <a style="color:#006;font-weight:900;font-size:small;float:right; text-decoration:none;" href="https://yourlink.com/">Home&nbsp;&nbsp;&nbsp;</a>
   </div>
   <div class="sidebar1">
     <ul class="nav">
@@ -206,7 +199,7 @@ for($i=0;$i<count($group);$i++)
 {
 ?>
     
-      <li><a href="https://fbgroupconversationsaver-fbapps.rhcloud.com/?page=0&group=<?php echo($grsorted[$i][2]); ?>&name=<?php 
+      <li><a href="https://yourlink.com/?page=0&group=<?php echo($grsorted[$i][2]); ?>&name=<?php 
 	  echo($grsorted[$i][1]); ?>"><?php echo($grsorted[$i][1]); ?></a></li>
     <?php
         }
@@ -271,13 +264,13 @@ $(".fadeOutbox").click(function () {
 </script>
 <?php if($curPage!=0) {?> 
       <p> <a style="font-weight:800; color:#000;text-decoration:none;"href="
-	  https://fbgroupconversationsaver-fbapps.rhcloud.com/search.php?q=<?php echo($search); ?>
+	  https://yourlink.com/search.php?q=<?php echo($search); ?>
 	  &page=<?php echo($prevPage);?>&group=<?php echo($groupp); ?>&groupname=<?php 
 	  echo($groupname); ?>"><-- Less &nbsp;&nbsp;</a>  <?php } ?>
 	<?php
 	  if(is_array($response['data'][1]))
 	  {?>
-      <a style="font-weight:800; float:right;color:#000;text-decoration:none;"href="https://fbgroupconversationsaver-fbapps.rhcloud.com/search.php?q=<?php echo($search); ?>&group=<?php echo($groupp); ?>&groupname=<?php echo($groupname); ?>&page=<?php echo($nextPage);?>">More --></a></p> <?php } ?>  
+      <a style="font-weight:800; float:right;color:#000;text-decoration:none;"href="https://yourlink.com/search.php?q=<?php echo($search); ?>&group=<?php echo($groupp); ?>&groupname=<?php echo($groupname); ?>&page=<?php echo($nextPage);?>">More --></a></p> <?php } ?>  
  <h1>&nbsp;&nbsp;<?php echo(stripslashes($groupname));?></h1>
 <div class="content">
   
@@ -451,91 +444,6 @@ if(empty($check))
 	<p style="color:#ffffff;">&copy; 2012 Facebook Conversation Saver</p>
     <!-- end .footer --></div>
 <!-- end .container --></div>
- <?php
-$ch=$_POST['submit'];
-if(isset($ch))
-{$group=stripslashes($_GET['groupname']);
-$fname=$_POST['data'];
-$concat=$group.$fname;
-preg_match_all("/[a-zA-Z0-9]/",$concat,$concat1);
-$concat2=implode("",$concat1[0]);
-$filename2=$concat2.".doc";
-$who=$_POST['name1'];
-$picc=$_POST['name1pic'];
-$linkk=htmlentities($_POST['name1link']);
-$posted=$_POST['comments'];
-$count=$_POST['count'];
-$email=$_POST['useremail'];
-$file2=fopen($filename2,"a+");
-fwrite($file2,"\n");
-fwrite($file2,$who." wrote:"."\n".htmlspecialchars(stripslashes($posted))."\n"."\n");
-fwrite($file2,"Link:".$linkk."\n");
-
-fwrite($file2,"Comments:"."\n"."\n");
-for($i=0;$i<=$count;$i++)
-{$names=$_POST['name2'.$i];
-$comments=$_POST['message2'.$i];
-if($_POST['name21']!=NULL)
-{
-fwrite($file2,$names." commented: \n\t".stripslashes($comments));
-fwrite($file2,"\n"."\n");
-}
-
-else
-{fwrite($file2,"\t No Comments Yet \n \n");
-break;}}
-fwrite($file2,"------------------------------------------------------------------------");
-fclose($file2);
-$fileatt = $filename2; 
-$fileatt_type = "application/doc"; 
-$fileatt_name = $group.".doc"; 
-
-$email_from = "no-reply@fbconversationsaver.com"; 
-$email_subject = "fb conversation saver:".$group;  
-
-$email_message .= "Thank you for using Facebook Conversation Saver app. Download the attachment to view the saved post.";
-
-
-$email_to =  $email; 
-$headers = "From: ".$email_from;
-
-$file = fopen($fileatt,'rb'); 
-$data = fread($file,filesize($fileatt)); 
-fclose($file);
-
-$semi_rand = md5(time()); 
-$mime_boundary = "==Multipart_Boundary_x{$semi_rand}x"; 
-
-$headers .= "\nMIME-Version: 1.0\n" . 
-"Content-Type: multipart/mixed;\n" . 
-" boundary=\"{$mime_boundary}\"";
-
-$email_message .= "This is a multi-part message in MIME format.\n\n" . 
-"--{$mime_boundary}\n" . 
-"Content-Type:text/html; charset=\"iso-8859-1\"\n" . 
-"Content-Transfer-Encoding: 7bit\n\n" . 
-$email_message .= "\n\n";
-
-$data = chunk_split(base64_encode($data));
-
-$email_message .= "--{$mime_boundary}\n" . 
-"Content-Type: {$fileatt_type};\n" . 
-" name=\"{$fileatt_name}\"\n" . 
-//"Content-Disposition: attachment;\n" . 
-//" filename=\"{$fileatt_name}\"\n" . 
-"Content-Transfer-Encoding: base64\n\n" . 
-$data .= "\n\n" . 
-"--{$mime_boundary}--\n";
-
-$ok = @mail($email_to, $email_subject, $email_message, $headers);
-
-?>
-<script type="text/javascript">
-alert("The saved post has been succesfully mailed to your e-mail account.If not found in inbox be sure to check junk mail. ");
-
-</script>
-<?php
-}
-?> 
+ 
 </body>
 </html>
