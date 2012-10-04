@@ -44,14 +44,7 @@ $filenam=$data2['id'];
 <html>
 <head>
 <meta charset="utf-8">
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# conversationsaver: http://ogp.me/ns/fb/conversationsaver#">
-  <meta property="fb:app_id"      content="334896846595020" /> 
-  <meta property="og:type"        content="conversationsaver:group_post" /> 
-  <meta property="og:url"         content="http://xplorers.host22.com" /> 
-  <meta property="og:title"       content="Facebook conversation saver" /> 
-  <meta property="og:image"       content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" /> 
-  <meta property="og:description" content="Extract and Save those specific post from your facebook group wall which you think will be important for future reference" /> 
-<link rel="shortcut icon" href="http://xplorers.host22.com/logo.jpg" />
+
 <title>Conversation Grabber</title>
 <script type="text/javascript" src="jquery-1.8.0.js"></script>
 <script type="text/javascript">
